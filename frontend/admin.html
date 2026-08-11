@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin — Wanderly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header class="topstrip">
+      <a class="brand" href="index.html" aria-label="Wanderly home"><span class="brand-mark" aria-hidden="true"></span>Wanderly</a>
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="index.html">Plan</a>
+        <a href="trips.html">Trips</a>
+        <a href="bookings.html">Bookings</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </header>
+    <main class="admin-body">
+      <section class="admin-card" id="loginCard">
+        <p class="eyebrow">Restricted</p>
+        <h1>Admin login</h1>
+        <p>Sign in to view all booked trips and customer names.</p>
+        <form id="adminLoginForm">
+          <label for="adminUser">Username</label>
+          <input type="text" id="adminUser" autocomplete="username" required>
+          <label for="adminPass">Password</label>
+          <input type="password" id="adminPass" autocomplete="current-password" required>
+          <p class="admin-error" id="adminError"></p>
+          <button type="submit">Sign in →</button>
+        </form>
+      </section>
+
+      <section class="admin-panel" id="adminPanel">
+        <div class="admin-head">
+          <div><p class="eyebrow">Admin view</p><h1>Booked trips</h1><p>Everyone's bookings and names.</p></div>
+          <button class="outline-link" id="logoutBtn" type="button" style="border:1px solid #b3261e;color:#b3261e;">Log out</button>
+        </div>
+        <table class="admin-table">
+          <thead>
+            <tr><th>Name</th><th>Destination</th><th>Region</th><th>Start date</th><th>Travelers</th></tr>
+          </thead>
+          <tbody id="adminRows"></tbody>
+        </table>
+        <p class="admin-empty" id="adminEmpty">No bookings yet.</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p class="made-by">Made by <strong>Kashif Sayyad</strong></p>
+      <p class="tagline">Wanderly · plan trips the smart way</p>
+    </footer>
+    <script src="js/mock-data.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>

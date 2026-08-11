@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wanderly — AI Travel Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header class="topstrip">
+      <a class="brand" href="index.html" aria-label="Wanderly home"><span class="brand-mark" aria-hidden="true"></span>Wanderly</a>
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="index.html">Plan</a>
+        <a href="trips.html">Trips</a>
+        <a href="bookings.html">Bookings</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-slider" aria-hidden="true">
+          <div class="hero-slide slide-1 active"></div>
+          <div class="hero-slide slide-2"></div>
+          <div class="hero-slide slide-3"></div>
+          <div class="hero-slide slide-4"></div>
+        </div>
+        <div class="hero-wash" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <p class="eyebrow">Plan your escape</p>
+          <h1 class="headline">Wander far.<br>Return <em>different.</em></h1>
+          <p class="sub">Tell us your budget, how long you can get away, and what makes a place feel like home. Wanderly lines up the destinations that fit you best.</p>
+          <form class="pass" action="results.html" method="get">
+            <div class="field"><label for="budget">Budget / day</label><select id="budget" name="budget_level"><option value="low">Under ₹2,000</option><option value="mid" selected>₹2,000 – ₹5,000</option><option value="high">₹5,000 – ₹10,000</option></select></div>
+            <div class="field"><label for="duration">Duration</label><select id="duration" name="duration_days"><option value="3">Weekend (2–3 days)</option><option value="5" selected>Short trip (4–7 days)</option><option value="10">Extended (8–14 days)</option></select></div>
+            <div class="field"><label>Interests</label><div class="tagrow" role="group" aria-label="Interest tags"><button class="tag active" type="button" data-interest="mountains">Mountains</button><button class="tag" type="button" data-interest="history">History</button><button class="tag active" type="button" data-interest="food">Food</button><button class="tag" type="button" data-interest="beach">Beaches</button><button class="tag" type="button" data-interest="adventure">Adventure</button><button class="tag" type="button" data-interest="nature">Nature</button><button class="tag" type="button" data-interest="nightlife">Nightlife</button><button class="tag" type="button" data-interest="culture">Culture</button><button class="tag" type="button" data-interest="relaxation">Relaxation</button><button class="tag" type="button" data-interest="romance">Romance</button><button class="tag" type="button" data-interest="wellness">Wellness</button><button class="tag" type="button" data-interest="wildlife">Wildlife</button></div><input type="hidden" name="interests" value="mountains,food"></div>
+            <div class="stub"><span class="code">MATCH&nbsp;&nbsp;01</span><button class="go-btn" type="submit">Find my trip <span aria-hidden="true">→</span></button></div>
+          </form>
+        </div>
+      </section>
+
+      <section class="featured">
+        <div class="section-head"><h2>Popular escapes</h2><span>FEATURED</span></div>
+        <div class="featured-grid">
+          <a class="spot" href="trips.html" style="background-image:url('https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&w=800&q=70')"><span>Santorini</span><small>Greece · ₹10,500/day</small></a>
+          <a class="spot" href="trips.html" style="background-image:url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=70')"><span>Kyoto</span><small>Japan · ₹9,000/day</small></a>
+          <a class="spot" href="trips.html" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=70')"><span>Interlaken</span><small>Switzerland · ₹15,000/day</small></a>
+          <a class="spot" href="trips.html" style="background-image:url('https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=800&q=70')"><span>Bali</span><small>Indonesia · ₹6,000/day</small></a>
+          <a class="spot" href="trips.html" style="background-image:url('https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=70')"><span>Maldives</span><small>Maldives · ₹16,500/day</small></a>
+          <a class="spot" href="trips.html" style="background-image:url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=70')"><span>New York</span><small>USA · ₹12,750/day</small></a>
+        </div>
+      </section>
+
+      <section class="feature-results">
+        <div class="section-head"><h2>Why Wanderly</h2><span>SMART MATCHING</span></div>
+        <div class="feature-grid">
+          <article><div class="feature-img f1"></div><span class="feature-number">01</span><h3>Personal matches</h3><p>Destination picks scored against your budget, duration, and interests — ranked just for you.</p></article>
+          <article><div class="feature-img f2"></div><span class="feature-number">02</span><h3>Effortless planning</h3><p>Your strongest matches, ranked and ready. No tabs, no overload, no guesswork.</p></article>
+          <article><div class="feature-img f3"></div><span class="feature-number">03</span><h3>One home for trips</h3><p>Save your plans and jump back in whenever wanderlust calls.</p></article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p class="made-by">Made by <strong>Kashif Sayyad</strong></p>
+      <p class="tagline">Wanderly · plan trips the smart way</p>
+    </footer>
+    <script src="js/mock-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/assistant.js"></script>
+  </body>
+</html>

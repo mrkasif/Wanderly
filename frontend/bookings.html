@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Bookings — Wanderly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header class="topstrip">
+      <a class="brand" href="index.html" aria-label="Wanderly home"><span class="brand-mark" aria-hidden="true"></span>Wanderly</a>
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="index.html">Plan</a>
+        <a href="trips.html">Trips</a>
+        <a href="bookings.html">Bookings</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </header>
+    <main>
+      <section class="trips-page">
+        <div class="match-heading">
+          <div><p class="eyebrow">Mock bookings</p><h1>My Bookings</h1><p>Trips you booked, kept on this device.</p></div>
+          <a class="outline-link" href="results.html">Find a trip</a>
+        </div>
+        <ul class="trip-list" id="bookingsList"></ul>
+        <p class="empty-state" id="emptyState">No bookings yet. Book a destination from your matches.</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p class="made-by">Made by <strong>Kashif Sayyad</strong></p>
+      <p class="tagline">Wanderly · plan trips the smart way</p>
+    </footer>
+    <script src="js/mock-data.js"></script>
+    <script src="js/bookings.js"></script>
+    <script src="js/assistant.js"></script>
+  </body>
+</html>

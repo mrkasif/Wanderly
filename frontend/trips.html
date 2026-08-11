@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>All Trips — Wanderly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header class="topstrip">
+      <a class="brand" href="index.html" aria-label="Wanderly home"><span class="brand-mark" aria-hidden="true"></span>Wanderly</a>
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="index.html">Plan</a>
+        <a href="trips.html">Trips</a>
+        <a href="bookings.html">Bookings</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </header>
+    <main>
+      <section class="trips-page">
+        <div class="match-heading">
+          <div><p class="eyebrow">Destination catalog</p><h1>All trips</h1><p id="summary">Loading every destination…</p></div>
+          <a class="outline-link" href="index.html">Plan new trip</a>
+        </div>
+        <ul class="trip-list" id="tripList"></ul>
+        <p class="empty-state" id="emptyState">Could not load trips. Showing demo data — start the backend with: python backend/app.py</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p class="made-by">Made by <strong>Kashif Sayyad</strong></p>
+      <p class="tagline">Wanderly · plan trips the smart way</p>
+    </footer>
+
+    <div class="modal-overlay" id="bookingModal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+        <button class="modal-close" type="button" aria-label="Close booking form">&times;</button>
+        <p class="eyebrow">Mock booking</p>
+        <h2 id="bookingTitle">Book <span class="modal-dest"></span></h2>
+        <form id="bookingForm">
+          <label for="bookingName">Your name</label>
+          <input type="text" id="bookingName" placeholder="e.g. Arjun" required>
+          <label for="bookingDate">Start date</label>
+          <input type="date" id="bookingDate" required>
+          <label for="bookingTravelers">Travelers</label>
+          <input type="number" id="bookingTravelers" min="1" max="20" required>
+          <button type="submit">Confirm booking</button>
+        </form>
+        <div class="modal-confirm" hidden>
+          <h3>Booking confirmed!</h3>
+          <p>This is a mock booking stored on your device. View it any time under <a href="bookings.html">My Bookings</a>.</p>
+          <button type="button" class="modal-goto">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/mock-data.js"></script>
+    <script src="js/trips.js"></script>
+    <script src="js/book.js"></script>
+    <script src="js/assistant.js"></script>
+  </body>
+</html>

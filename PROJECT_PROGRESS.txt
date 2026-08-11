@@ -1,0 +1,204 @@
+========================================================================
+   WANDERLY - AI TRAVEL PLANNER
+   PROJECT OVERVIEW & 6-WEEK PROGRESS REPORT
+========================================================================
+
+WHAT IS THIS PROJECT?
+---------------------
+Wanderly is a web-based AI travel planner. A user tells the system
+their budget, trip duration and interests (or simply describes their
+dream trip in plain language), and Wanderly:
+
+  1. Scores and ranks destinations from a built-in catalog (50 places
+     worldwide) based on how well they match the user's preferences.
+  2. Builds a simple itinerary preview from the top matches.
+  3. Lets the user "mock book" a trip, saving it with name, date and
+     number of travelers.
+  4. Provides an admin panel where a logged-in admin can view every
+     booking made across users.
+
+The project is a full-stack application built with a Python/Flask
+backend and a hand-written HTML/CSS/JavaScript frontend (no build
+tools, no heavy frameworks).
+
+--------------------------------------------------------------------
+TECHNOLOGY STACK
+--------------------------------------------------------------------
+  Backend  : Python + Flask
+             - app.py         : REST API server and routing
+             - recommender.py : matching / scoring / itinerary logic
+             - mock_data.py   : 50-destination catalog, moods, keywords
+             - bookings.json  : JSON file storage for bookings
+             - requirements.txt (Flask>=3.0.0)
+
+  Frontend : Plain HTML + CSS + vanilla JavaScript
+             - index.html     : home / plan page (budget, duration, interests)
+             - results.html   : ranked matches + itinerary preview
+             - trips.html     : full destination catalog + booking modal
+             - bookings.html  : "My Bookings" list (per device)
+             - admin.html     : admin login + all-bookings table
+             - js/            : main.js, results.js, trips.js, bookings.js,
+                                admin.js, book.js, assistant.js
+             - css/style.css  : shared design system
+
+  Run      : cd backend && python app.py  ->  http://localhost:5000
+
+  Note     : Rebranded & redesigned as "Wanderly" (sunset/plum theme,
+            Sora/Inter/JetBrains Mono). Every page now carries a
+            "Made by Kashif Sayyad" footer credit.
+
+  Default admin login: username "laksh" / password "laksh123"
+  (hard-coded for the demo; tokens generated per session)
+
+--------------------------------------------------------------------
+WHAT IS DONE (FEATURE SUMMARY)
+--------------------------------------------------------------------
+  * Destination catalog
+    - 50 real-world destinations with region, area, budget level,
+      climate, tags, moods, average daily cost and description.
+    - Covers Europe, Asia, Africa, the Americas, Islands, Oceania and
+      the Middle East, at low / mid / high budget levels.
+
+  * Smart recommendation engine (recommender.py)
+    - Scores each destination against budget, interest tags and trip
+      duration, returns the top 5 with a match percentage.
+    - Free-text assistant: a keyword dictionary maps phrases
+      ("snowy mountains", "street food", "northern lights", etc.) to
+      destination features so users can just describe their dream trip.
+
+  * Itinerary builder
+    - Turns the ranked matches into a numbered day-by-day style
+      itinerary preview.
+
+  * Mock booking flow
+    - Book any destination from the results or trips page with name,
+      start date and traveler count.
+    - Bookings persist on the server in bookings.json.
+
+  * My Bookings page
+    - Lists the user's bookings on their device and allows removal.
+
+  * Admin panel
+    - Token-based admin login, table of every booking with customer
+      names, destinations, dates and traveler counts, and logout.
+
+  * REST API (Flask)
+    - GET  /api/health, /api/destinations, /api/recommend,
+          /api/assistant, /api/bookings
+    - POST /api/assistant, /api/bookings, /api/admin/login,
+          /api/admin/logout
+    - GET  /api/admin/bookings (auth required)
+    - DELETE /api/bookings/<id>
+
+========================================================================
+   6-WEEK PROGRESS REPORT
+========================================================================
+
+WEEK 1 - PROJECT SETUP & PLANNING
+---------------------------------
+  * Chose the stack: Flask (Python) for the backend, plain HTML/CSS/JS
+    for the frontend, and a JSON file for storage (no database setup
+    needed for a demo).
+  * Created the project folder structure (backend/ and frontend/).
+  * Installed and pinned Flask (requirements.txt, Flask>=3.0.0).
+  * Defined the scope:
+      - destination recommendation,
+      - itinerary preview,
+      - mock bookings,
+      - admin view.
+  * Designed the data model for destinations: id, name, region, area,
+    budget_level, climate, tags, moods, avg_cost_per_day, description.
+
+WEEK 2 - DESTINATION CATALOG & MOCK DATA
+----------------------------------------
+  * Built mock_data.py with a curated catalog of 50 destinations.
+  * Tagged every destination with multiple interests (mountains,
+    history, food, beach, adventure, culture, nightlife, nature,
+    romance, relaxation, etc.) and moods.
+  * Added supporting data:
+      - MOODS list (adventure, relaxation, culture, food, nature,
+        romance, nightlife),
+      - ASSISTANT_AREAS (regions used by the mood-based assistant),
+      - KEYWORDS dictionary mapping everyday phrases to features.
+  * Balanced the catalog across budget levels (low / mid / high) and
+    geographic areas so recommendations feel varied.
+
+WEEK 3 - RECOMMENDATION ENGINE
+------------------------------
+  * Implemented the core scoring logic in recommender.py:
+      +3 when the destination's budget_level exactly matches the
+         user's chosen budget,
+      +1 partial credit when a "mid" budget includes low/mid options,
+      +2 per interest tag that matches the destination,
+      +1 when the trip duration is 5+ days.
+  * Added recommend() which returns the top 5 destinations with a
+    descending match percentage (92% down to ~72%).
+  * Added build_itinerary() to convert the top matches into a numbered
+    itinerary preview.
+  * Added suggest_by_mood() for mood-based quick picks (used by the
+    assistant flow).
+
+WEEK 4 - FREE-TEXT AI ASSISTANT
+-------------------------------
+  * Built analyze_text(): scans a user's plain-language description for
+    keywords (e.g. "beach", "spa", "honeymoon", "northern lights") and
+    converts them into destination features.
+  * Built suggest_by_description(): scores every destination against
+    the matched features (2 points per matched feature, bonus points if
+    the destination name, region, area or climate appears in the text)
+    and returns the top 5 suggestions.
+  * Wired the assistant into the REST API:
+      GET  /api/assistant -> welcome message,
+      POST /api/assistant -> takes text, returns suggestions.
+  * Added friendly fallback messages when no keywords are recognized.
+
+WEEK 5 - REST API & BOOKINGS
+----------------------------
+  * Built app.py exposing the full REST API.
+  * Implemented booking storage in bookings.json:
+      - load/save helpers with safe error handling,
+      - POST /api/bookings creates a booking with a unique id,
+      - DELETE /api/bookings/<id> removes one,
+      - GET  /api/bookings lists all.
+  * Added the admin endpoints:
+      - POST /api/admin/login  -> validates hard-coded credentials,
+        issues a random session token,
+      - POST /api/admin/logout -> discards the token,
+      - GET  /api/admin/bookings -> returns all bookings (only for
+        holders of a valid Bearer token).
+  * Added /api/health and /api/destinations endpoints, and made Flask
+    serve the frontend static files from the same server.
+
+WEEK 6 - FRONTEND UI & POLISH
+-----------------------------
+  * Built the full frontend:
+      - index.html      : hero landing page with budget / duration
+                          selects and interactive interest tags, which
+                          submit to the results page,
+      - results.html    : renders ranked match "tickets" with match
+                          percentage and the itinerary preview,
+      - trips.html      : full catalog list with a booking modal,
+      - bookings.html   : per-device list of the user's bookings with
+                          delete support,
+      - admin.html      : login card that swaps to an admin table of
+                          all bookings (logout support).
+  * Wrote the shared design system in css/style.css (fonts, colors,
+    buttons, cards, modals, responsive layout).
+  * Added js/ modules for each page plus book.js (shared booking modal
+    logic) and assistant.js (shared AI-assistant chip / widget).
+  * End-to-end testing of the flow:
+      Plan -> Results -> Book -> My Bookings -> Admin view.
+
+--------------------------------------------------------------------
+NEXT STEPS / FUTURE WORK
+--------------------------------------------------------------------
+  * Swap JSON file storage for a real database (SQLite/PostgreSQL).
+  * Hash admin credentials instead of hard-coding them.
+  * Add user accounts so bookings follow the user, not the device.
+  * Expand the destination catalog and keyword dictionary.
+  * Add real-time pricing/weather data via external APIs.
+  * Add unit tests for the recommendation engine.
+
+========================================================================
+END OF REPORT
+========================================================================
