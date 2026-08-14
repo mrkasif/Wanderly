@@ -10,7 +10,7 @@ from mock_data import DESTINATIONS
 from recommender import build_itinerary, recommend, suggest_by_description
 
 BASE_DIR = Path(__file__).resolve().parent
-FRONTEND_DIR = BASE_DIR.parent / "frontend"
+FRONTEND_DIR = BASE_DIR.parent
 BOOKINGS_FILE = BASE_DIR / "bookings.json"
 
 ADMIN_USERNAME = "laksh"

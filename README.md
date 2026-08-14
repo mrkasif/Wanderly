@@ -59,21 +59,23 @@ Hard-coded for the demo; sessions are token-based.
 
 ```
 .
-├── backend/
-│   ├── app.py            # REST API server and routing
-│   ├── recommender.py    # matching / scoring / itinerary logic
-│   ├── mock_data.py      # 50-destination catalog + keyword dictionary
-│   ├── bookings.json     # JSON file storage for bookings (runtime data)
+├── backend/           # Flask API + destination catalog + booking storage
+│   ├── app.py         # REST API server and routing
+│   ├── recommender.py # matching / scoring / itinerary logic
+│   ├── mock_data.py   # 50-destination catalog + keyword dictionary
+│   ├── bookings.json  # JSON file storage for bookings (runtime data)
 │   └── requirements.txt
-└── frontend/
-    ├── index.html        # home / plan page (budget, duration, interests)
-    ├── results.html      # ranked matches + itinerary preview
-    ├── trips.html        # full destination catalog + booking modal
-    ├── bookings.html     # "My Bookings" list (per device)
-    ├── admin.html        # admin login + all-bookings table
-    ├── css/style.css     # shared design system
-    └── js/               # page scripts + shared book / assistant logic
+├── index.html         # home / plan page (budget, duration, interests)
+├── results.html       # ranked matches + itinerary preview
+├── trips.html         # full destination catalog + booking modal
+├── bookings.html      # "My Bookings" list (per device)
+├── admin.html         # admin login + all-bookings table
+├── css/style.css      # shared design system
+├── js/                # page scripts + shared book / assistant logic
+└── .github/workflows/ # GitHub Pages deployment (root = static site root)
 ```
+
+The site is a pure static site at the repo root, so it runs on GitHub Pages out of the box. Run `python backend/app.py` for the full API (recommendations, bookings, admin) locally.
 
 ## REST API
 
