@@ -47,7 +47,7 @@ TECHNOLOGY STACK
             Sora/Inter/JetBrains Mono). Every page now carries a
             "Made by Kashif Sayyad" footer credit.
 
-  Default admin login: username "laksh" / password "laksh123"
+  Default admin login: username "kashif" / password "kashif123"
   (hard-coded for the demo; tokens generated per session)
 
 --------------------------------------------------------------------

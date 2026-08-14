@@ -13,8 +13,8 @@ BASE_DIR = Path(__file__).resolve().parent
 FRONTEND_DIR = BASE_DIR.parent
 BOOKINGS_FILE = BASE_DIR / "bookings.json"
 
-ADMIN_USERNAME = "laksh"
-ADMIN_PASSWORD = "laksh123"
+ADMIN_USERNAME = "kashif"
+ADMIN_PASSWORD = "kashif123"
 
 app = Flask(__name__, static_folder=None)
 

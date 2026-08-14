@@ -49,8 +49,8 @@ The backend serves the frontend from the same server, so no separate build step 
 ### Default admin login
 
 ```
-username: laksh
-password: laksh123
+username: kashif
+password: kashif123
 ```
 
 Hard-coded for the demo; sessions are token-based.

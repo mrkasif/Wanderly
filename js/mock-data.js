@@ -1,4 +1,4 @@
-const MOCK_ADMIN = { username: 'laksh', password: 'laksh123' };
+const MOCK_ADMIN = { username: 'kashif', password: 'kashif123' };
 
 const MOCK_DESTINATIONS = [
   { id: 1, name: 'Santorini', region: 'Greece', area: 'Europe', budget_level: 'mid', climate: 'mediterranean', tags: ['beach', 'romance', 'food'], moods: ['romance', 'relaxation', 'food'], avg_cost_per_day: 140, description: 'Whitewashed villages and sunsets that look unreal.' },
